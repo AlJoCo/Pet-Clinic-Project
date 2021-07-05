@@ -1,4 +1,4 @@
-- hosts: managers
+- hosts: managers 
   become: true
   roles:
   - docker
@@ -13,6 +13,7 @@
   roles:
   - nginx
 
+# hosts are configured in the inventory.yaml file
 # installation of docker in ansible is a must.
 # manager, worker, and nginx may not be needed for the playbook.yaml. these could be included during the kubernetes implementation. 
 # a new kubernetes role might be useful in this case.
