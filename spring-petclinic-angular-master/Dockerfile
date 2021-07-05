@@ -13,7 +13,7 @@ RUN echo "registry = \"$NPM_REGISTRY\"" > /workspace/.npmrc                     
     npm run build
 
 ARG NGINX_VERSION="1.17.6"
-FROM $DOCKER_HUB/library/nginx:$NGINX_VERSION AS runtime
+FROM nginx AS runtime
 
 
 COPY  --from=build /workspace/dist/ /usr/share/nginx/html/
