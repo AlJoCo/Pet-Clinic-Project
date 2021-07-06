@@ -8,6 +8,7 @@ curl https://get.docker.com | sudo bash
 sudo usermod -aG docker $(whoami)
 #restart terminal
 
-docker run -p 9966:9966 springcommunity/spring-petclinic-rest
+docker build -t spring-petclinic-rest-master:latest .
+docker run --rm -p 9966:9966 spring-petclinic-rest-master:latest
 
 # REMEMBER TO ADD INBOUND RULE FOR ASSOCIATED PORTS TO RUN
