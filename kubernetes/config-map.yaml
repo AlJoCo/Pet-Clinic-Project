@@ -4,7 +4,9 @@ metadata:
   name: nginx-config
 data:
   default.conf: |
-    server {
+    events {}
+    http{
+      server {
         listen 80;
         location / {
             proxy_pass http://frontend:8080
@@ -12,4 +14,5 @@ data:
         location /petclinic/api/ {
             proxy_pass http://backend:9966
         }
+      }
     }
