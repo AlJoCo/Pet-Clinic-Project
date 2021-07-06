@@ -1,26 +1,9 @@
-FROM maven:latest
+FROM maven:3.6.0-jdk-11-slim AS build
+COPY src /home/app/src
+COPY pom.xml /home/app
+RUN mvn -f /home/app/pomm.xml clean package
 
-# copy our application in
-COPY . /build
-
-# change the working directory to where we are building
-# the application
-WORKDIR /build
-
-# use maven to build the application
-RUN mvn clean package
-
-# create a new build stage from the Java image
-# which has java installed already
-FROM java:8
-
-# change the working directory to where the application
-# is going to be installed
-WORKDIR /opt/pet-clinic-backend
-
-# copy the JAR file that was created in the previous
-# build stage to the application folder in this build stage
-COPY --from=0 /build/target/spring-petclinic-rest-2.4.2.jar app.jar
-
-# create an entrypoint to run the application
-ENTRYPOINT ["/usr/bin/java", "-jar", "app.jar"]
+FROM openjdk:11-jre-slim
+COPY --from=build /home/app/target/spring-petclinic-rest-2.4.2.jar /usr/local/lib/application.jar
+EXPOSE 9966
+ENTRYPOINT ["java","-jar","/usr/local/lib/application.jar"]
