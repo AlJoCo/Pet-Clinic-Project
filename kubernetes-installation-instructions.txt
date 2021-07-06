@@ -14,3 +14,10 @@ curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s http
 sudo mv ./kubectl /usr/local/bin/kubectl 
 
 eksctl create cluster -f eks-pcp.yaml
+
+docker login
+docker tag spring-petclinic-angular-master:latest andrewbarrett18/spring-petclinic-frontend:latest
+docker push andrewbarrett18/spring-petclinic-frontend
+
+docker tag spring-petclinic-rest-master:latest andrewbarrett18/spring-petclinic-backend:latest
+docker push andrewbarrett18/spring-petclinic-backend
