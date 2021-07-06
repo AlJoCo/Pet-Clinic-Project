@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
-# metadata:
-#   name: app
+metadata:
+  name: pcp-app
 spec:
   selector:
-    app: app
+    app: pcp-app
   # type: NodePort
   ports:
   - protocol: TCP
@@ -13,9 +13,9 @@ spec:
 ---
 apiVersion: v1
 kind: Deployment
-# metadata:
-#     app: app
-#   name: app
+metadata:
+    app: pcp-app
+  name: pcp-app
 spec:
   containers:
   - name: spring-petclinic-backend
