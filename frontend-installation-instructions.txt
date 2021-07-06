@@ -1,0 +1,27 @@
+#install npm
+curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+sudo npm uninstall -g angular-cli @angular/cli
+npm cache clean -f
+sudo npm install -g @angular/cli@latest -y
+
+git clone https://github.com/AlJoCo/Pet-Clinic-Project.git
+
+npm install --save-dev @angular/cli@latest -y
+# if npm version > 5.0 delete package-lock.json file  ( bug in npm 5.0 - this file prevent correct packages install)
+npm install
+
+#install docker
+sudo apt-get update
+sudo apt install curl -y
+curl https://get.docker.com | sudo bash
+sudo usermod -aG docker $(whoami)
+#restart terminal
+
+cd Pet-Clinic-Project/spring-petclinic-angular-master/
+
+docker build -t spring-petclinic-angular-master:latest .
+docker run --rm -p 8080:8080 spring-petclinic-angular-master:latest
+
+# REMEMBER TO ADD INBOUND RULE FOR ASSOCIATED PORTS TO RUN
