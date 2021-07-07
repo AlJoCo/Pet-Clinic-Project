@@ -1,2 +1,7 @@
-kubectl run mysql-client --image=mysql:5.7 -i -t --rm --restart=Never --\
-  /usr/bin/mysql -h mysql-0.mysql -e "CREATE DATABASE mydb; CREATE TABLE mydb.notes (note VARCHAR(250)); INSERT INTO mydb.notes VALUES ('k8s Cloud Academy Lab');"
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: general
+provisioner: kubernetes.io/aws-ebs
+parameters:
+  type: gp2
