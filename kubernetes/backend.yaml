@@ -18,9 +18,9 @@ spec:
         image: andrewbarrett18/spring-petclinic-backend:latest
         ports:
         - containerPort: 9966
-        volumeMounts:
-        - name: data
-          mountPath: /var/lib/mysql
+        # volumeMounts:
+        # - name: data
+        #   mountPath: /var/lib/mysql
 ---
 apiVersion: v1
 kind: Service
