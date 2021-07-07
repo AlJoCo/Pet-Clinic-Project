@@ -28,7 +28,7 @@ spec:
         app: pcp-app
     spec:
       containers:
-      - name: spring-petclinic-backend
+      - name: backend
         image: andrewbarrett18/spring-petclinic-backend:latest
         imagePullPolicy: IfNotPresent
         resources:
@@ -41,7 +41,7 @@ spec:
         ports:
         - containerPort: 9966
         
-      - name: spring-petclinic-frontend
+      - name: frontend
         image: andrewbarrett18/spring-petclinic-frontend:latest
         imagePullPolicy: IfNotPresent
         ports:
