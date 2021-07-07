@@ -1,0 +1,2 @@
+kubectl run mysql-client --image=mysql:5.7 -i -t --rm --restart=Never --\
+  /usr/bin/mysql -h mysql-0.mysql -e "CREATE DATABASE PetClinic; CREATE TABLE PetClinic.notes (note VARCHAR(250)); INSERT INTO PetClinic.notes VALUES ('Entries');"
