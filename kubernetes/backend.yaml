@@ -19,7 +19,7 @@ spec:
         ports:
         - containerPort: 9966
         volumeMounts:
-        - name: mysql
+        - name: mysql-persistent-storage
           mountPath: /var/lib/mysql
 ---
 apiVersion: v1
