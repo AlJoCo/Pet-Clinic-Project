@@ -20,7 +20,7 @@ spec:
         - containerPort: 9966
         volumeMounts:
         - name: mysql
-        mountPath: /var/lib/mysql
+          mountPath: /var/lib/mysql
 ---
 apiVersion: v1
 kind: Service
