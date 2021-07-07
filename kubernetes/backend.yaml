@@ -18,13 +18,13 @@ spec:
         image: andrewbarrett18/spring-petclinic-backend:latest
         ports:
         - containerPort: 9966
-        volumeMounts:
-        - name: mysql-persistent-storage
-          mountPath: /var/lib/mysql
-      volumes:
-      - name: mysql-persistent-storage
-        persistentVolumeClaim:
-          claimName: mysql-pv-claim
+      #   volumeMounts:
+      #   - name: mysql-persistent-storage
+      #     mountPath: /var/lib/mysql
+      # volumes:
+      # - name: mysql-persistent-storage
+      #   persistentVolumeClaim:
+      #     claimName: mysql-pv-claim
 ---
 apiVersion: v1
 kind: Service
