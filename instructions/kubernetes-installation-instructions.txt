@@ -23,7 +23,9 @@ docker push andrewbarrett18/spring-petclinic-frontend
 docker tag spring-petclinic-rest-master:latest andrewbarrett18/spring-petclinic-backend:latest
 docker push andrewbarrett18/spring-petclinic-backend
 
-kubectl create -f main.yaml
+kubectl create -f config-map.yaml
+kubectl create -f backend.yaml
+kubectl create -f frontend.yaml
 kubectl create -f nginx.yaml
 
 kubectl get services
