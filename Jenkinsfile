@@ -7,6 +7,7 @@ pipeline {
         DOCKER_PASSWORD = credentials('DOCKER_PASSWORD')
         ACCESS_KEY = credentials('ACCESS_KEY')
         SECRET_ACCESS_KEY = credentials('SECRET_ACCESS_KEY')
+        created_cluster = 'false'
         // DATABASE_URL = credentials('DATABASE_URL')
         // SECRET_KEY = credentials('SECRET_KEY')
     }
@@ -19,7 +20,11 @@ pipeline {
                 sh './scripts/dependencies.sh'
                 sh './scripts/docker.sh'
                 // sh './scripts/terraform.sh'
-                sh './scripts/clusterconfig.sh'
+                script {
+                    if (env.created_cluster == 'false') {
+                        sh './scripts/clusterconfig.sh'
+                    }
+                }
             }
 
         }
