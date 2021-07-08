@@ -36,8 +36,6 @@ pipeline {
         stage('Deploy Pods'){
 
             steps {
-
-                sh 'kubectl autoscale deployment EKS-course1-cluster --min=2 --max=5 --cpu-percent=80'
                 
                 sh 'cd kubernetes'
                 sh 'kubectl delete -f ./kubernetes/config-map.yaml -f ./kubernetes/backend.yaml -f ./kubernetes/frontend.yaml -f ./kubernetes/nginx.yaml'
@@ -48,6 +46,9 @@ pipeline {
                 sh 'kubectl delete -f ./mysql/mysql-configmap.yaml -f ./mysql/mysql-pv.yaml -f ./mysql/mysql-services.yaml -f ./mysql/mysql-statefulset.yaml -f ./mysql/mysql-storageclass.yaml'
                 sh 'kubectl create -f ./mysql/mysql-configmap.yaml -f ./mysql/mysql-pv.yaml -f ./mysql/mysql-services.yaml -f ./mysql/mysql-statefulset.yaml -f ./mysql/mysql-storageclass.yaml'
                 sh 'cd ..'
+
+                sh 'kubectl autoscale deployment backend --min=2 --max=5 --cpu-percent=80'
+                sh 'kubectl autoscale deployment frontend --min=2 --max=5 --cpu-percent=80'
                 
             }
 
