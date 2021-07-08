@@ -1,46 +1,42 @@
-// Requirements for jenkins to automaticall build the application requirements
+// Requirements for jenkins to automatically build the application requirements
 pipeline {
 
     agent any
-
+    environment {
+        DOCKER_USERNAME = credentials('DOCKER_USERNAME')
+        DOCKER_PASSWORD = credentials('DOCKER_PASSWORD')
+        ACCESS_KEY = credentials('ACCESS_KEY')
+        SECRET_ACCESS_KEY = credentials('SECRET_ACCESS_KEY')
+        DATABASE_URL = credentials('DATABASE_URL')
+        SECRET_KEY = credentials('SECRET_KEY')
+    }
     stages{
         // Do initial setup
-        stage('Set Manager Node'){
+        stage('Configuring Environment'){
 
             steps {
-
-                sh 'aws eks update-kubeconfig --name FP-EKS-CLUSTER'
-
+                sh 'chmod +x ./scripts/*'
+                sh './scripts/dependencies.sh'
+                sh './scripts/docker.sh'
+                sh './scripts/terraform.sh'
             }
 
         }
         // Deploy backend pods
-        stage('Deploy Backend'){
+        stage('Deploy Pods'){
 
             steps {
-
-                sh 'kubectl apply -f backend_pods.yml'
-
+                sh 'kubectl create -f config-map.yaml -f backend.yaml -f frontend.yaml -f nginx.yaml'
             }
 
         }
-        // Deploy frontend pods
-        stage("Deploy Frontend") {
+        // Testing
+        stage('Run Tests'){
 
             steps {
 
-                sh 'kubectl apply -f frontend_pods.yml'
-
+                sh './scripts/backtest.sh'
             }
-
-        }
-        // Deploy NGINX
-        stage('Deploy NGINX') {
-
-            steps {
-
-                sh 'kubectl apply -f nginx_pods.yml'
-                }
 
         }
     }
