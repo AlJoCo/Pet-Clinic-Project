@@ -18,3 +18,5 @@ docker push andrewbarrett18/spring-petclinic-backend
 docker push andrewbarrett18/spring-petclinic-frontend
 
 source ~/.bashrc
+
+cd ..
