@@ -1,6 +1,6 @@
 resource "aws_eks_cluster" "qa_cluster" {
 
-  name = "qa_cluster"
+  name = "EKS-course1-cluster"
 
   role_arn = var.qa_cluster_iam_role_arn
 
@@ -24,9 +24,9 @@ resource "aws_eks_node_group" "qa_node_group" {
 
   scaling_config {
 
-    desired_size = 1
+    desired_size = 2
 
-    max_size = 1
+    max_size = 4
 
     min_size = 1
 
