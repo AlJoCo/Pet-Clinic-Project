@@ -18,7 +18,7 @@ pipeline {
                 sh 'chmod +x ./scripts/*'
                 sh './scripts/dependencies.sh'
                 sh './scripts/docker.sh'
-                sh './scripts/terraform.sh'
+                //sh './scripts/terraform.sh'
             }
 
         }
