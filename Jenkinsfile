@@ -37,7 +37,7 @@ pipeline {
 
             steps {
                 sh 'cd kubernetes'
-                sh 'kubectl create -f config-map.yaml -f backend.yaml -f frontend.yaml -f nginx.yaml'
+                sh 'kubectl create -f ./kubernetes/config-map.yaml -f ./kubernetes/backend.yaml -f ./kubernetes/frontend.yaml -f ./kubernetes/nginx.yaml'
                 sh 'kubectl get services'
                 sh 'cd ..'
             }
