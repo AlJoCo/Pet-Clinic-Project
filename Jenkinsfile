@@ -7,8 +7,8 @@ pipeline {
         DOCKER_PASSWORD = credentials('DOCKER_PASSWORD')
         ACCESS_KEY = credentials('ACCESS_KEY')
         SECRET_ACCESS_KEY = credentials('SECRET_ACCESS_KEY')
-        DATABASE_URL = credentials('DATABASE_URL')
-        SECRET_KEY = credentials('SECRET_KEY')
+        // DATABASE_URL = credentials('DATABASE_URL')
+        // SECRET_KEY = credentials('SECRET_KEY')
     }
     stages{
         // Do initial setup
