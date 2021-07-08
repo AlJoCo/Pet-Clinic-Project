@@ -7,7 +7,7 @@ pipeline {
         DOCKER_PASSWORD = credentials('DOCKER_PASSWORD')
         ACCESS_KEY = credentials('ACCESS_KEY')
         SECRET_ACCESS_KEY = credentials('SECRET_ACCESS_KEY')
-        created_cluster = 'false'
+        created_cluster = 'true'
         // DATABASE_URL = credentials('DATABASE_URL')
         // SECRET_KEY = credentials('SECRET_KEY')
     }
@@ -20,6 +20,9 @@ pipeline {
                 sh './scripts/dependencies.sh'
                 sh './scripts/docker.sh'
                 // sh './scripts/terraform.sh'
+                sh 'aws configure set aws_access_key_id $ACCESS_KEY'
+                sh 'aws configure set aws_secret_access_key $SECRET_ACCESS_KEY'
+                sh 'cd kubernetes'
                 script {
                     if (env.created_cluster == 'false') {
                         sh './scripts/clusterconfig.sh'
