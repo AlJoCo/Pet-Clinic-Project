@@ -1,6 +1,6 @@
 #!/bin/bash
 sudo docker system prune
-sudo docker rmi $(docker images -aq)
+# sudo docker rmi $(docker images -aq)
 docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
 
 cd spring-petclinic-rest-master/
