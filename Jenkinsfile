@@ -8,6 +8,7 @@ pipeline {
         ACCESS_KEY = credentials('ACCESS_KEY')
         SECRET_ACCESS_KEY = credentials('SECRET_ACCESS_KEY')
         created_cluster = 'true'
+        created_pods = 'true'
         // DATABASE_URL = credentials('DATABASE_URL')
         // SECRET_KEY = credentials('SECRET_KEY')
     }
@@ -37,8 +38,11 @@ pipeline {
 
             steps {
                 sh 'cd kubernetes'
-                sh 'kubectl create -f ./kubernetes/config-map.yaml -f ./kubernetes/backend.yaml -f ./kubernetes/frontend.yaml -f ./kubernetes/nginx.yaml'
-                sh 'kubectl get services'
+                script {
+                    if (env.created_pods == 'false') {
+                        sh 'kubectl create -f ./kubernetes/config-map.yaml -f ./kubernetes/backend.yaml -f ./kubernetes/frontend.yaml -f ./kubernetes/nginx.yaml'
+                    }
+                }
                 sh 'cd ..'
             }
 
@@ -47,8 +51,15 @@ pipeline {
         stage('Run Tests'){
 
             steps {
-
                 sh './scripts/backtest.sh'
+            }
+
+        }
+
+        stage('Obtain IP'){
+
+            steps {
+                sh 'kubectl get services'
             }
 
         }
