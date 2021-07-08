@@ -28,6 +28,7 @@ pipeline {
                         sh './scripts/clusterconfig.sh'
                     }
                 }
+                sh 'cd'
             }
 
         }
@@ -35,6 +36,7 @@ pipeline {
         stage('Deploy Pods'){
 
             steps {
+                sh 'cd kubernetes'
                 sh 'kubectl create -f config-map.yaml -f backend.yaml -f frontend.yaml -f nginx.yaml'
                 sh 'kubectl get services'
                 sh 'cd ..'
