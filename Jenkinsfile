@@ -8,8 +8,6 @@ pipeline {
         ACCESS_KEY = credentials('ACCESS_KEY')
         SECRET_ACCESS_KEY = credentials('SECRET_ACCESS_KEY')
         created_cluster = 'true'
-        created_pods = 'false'
-        created_mysql_pods = 'false'
         // DATABASE_URL = credentials('DATABASE_URL')
         // SECRET_KEY = credentials('SECRET_KEY')
     }
@@ -30,8 +28,7 @@ pipeline {
                         sh './scripts/clusterconfig.sh'
                     }
                 }
-                sh 'cd'
-                sh 'kubectl delete -f ./kubernetes/config-map.yaml -f ./kubernetes/backend.yaml -f ./kubernetes/frontend.yaml -f ./kubernetes/nginx.yaml'       
+                sh 'cd'       
             }
 
         }
@@ -39,22 +36,18 @@ pipeline {
         stage('Deploy Pods'){
 
             steps {
-                
-                script {
-                    if (env.created_pods == 'false') {
-                        sh 'cd kubernetes'
-                        sh 'kubectl create -f ./kubernetes/config-map.yaml -f ./kubernetes/backend.yaml -f ./kubernetes/frontend.yaml -f ./kubernetes/nginx.yaml'
-                        sh 'cd ..'
-                    }
-                }
 
-                script {
-                    if (env.created_mysql_pods == 'false') {
-                        sh 'cd mysql'
-                        sh 'kubectl create -f ./mysql/mysql-configmap.yaml -f ./mysql/mysql-pv.yaml -f ./mysql/mysql-services.yaml -f ./mysql/mysql-statefulset.yaml -f ./mysql/mysql-storageclass.yaml'
-                        sh 'cd ..'
-                    }
-                }
+                sh 'kubectl autoscale deployment EKS-course1-cluster --min=2 --max=5 --cpu-percent=80'
+                
+                sh 'cd kubernetes'
+                sh 'kubectl delete -f ./kubernetes/config-map.yaml -f ./kubernetes/backend.yaml -f ./kubernetes/frontend.yaml -f ./kubernetes/nginx.yaml'
+                sh 'kubectl create -f ./kubernetes/config-map.yaml -f ./kubernetes/backend.yaml -f ./kubernetes/frontend.yaml -f ./kubernetes/nginx.yaml'
+                sh 'cd ..'
+
+                sh 'cd mysql'
+                sh 'kubectl delete -f ./mysql/mysql-configmap.yaml -f ./mysql/mysql-pv.yaml -f ./mysql/mysql-services.yaml -f ./mysql/mysql-statefulset.yaml -f ./mysql/mysql-storageclass.yaml'
+                sh 'kubectl create -f ./mysql/mysql-configmap.yaml -f ./mysql/mysql-pv.yaml -f ./mysql/mysql-services.yaml -f ./mysql/mysql-statefulset.yaml -f ./mysql/mysql-storageclass.yaml'
+                sh 'cd ..'
                 
             }
 
