@@ -8,7 +8,7 @@ pipeline {
         ACCESS_KEY = credentials('ACCESS_KEY')
         SECRET_ACCESS_KEY = credentials('SECRET_ACCESS_KEY')
         created_cluster = 'true'
-        created_pods = 'true'
+        created_pods = 'false'
         created_mysql_pods = 'false'
         // DATABASE_URL = credentials('DATABASE_URL')
         // SECRET_KEY = credentials('SECRET_KEY')
@@ -31,6 +31,7 @@ pipeline {
                     }
                 }
                 sh 'cd'
+                sh 'kubectl delete -f ./kubernetes/config-map.yaml -f ./kubernetes/backend.yaml -f ./kubernetes/frontend.yaml -f ./kubernetes/nginx.yaml'       
             }
 
         }
