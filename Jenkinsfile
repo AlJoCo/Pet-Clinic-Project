@@ -47,8 +47,8 @@ pipeline {
                 sh 'kubectl create -f ./mysql/mysql-configmap.yaml -f ./mysql/mysql-pv.yaml -f ./mysql/mysql-services.yaml -f ./mysql/mysql-statefulset.yaml -f ./mysql/mysql-storageclass.yaml'
                 sh 'cd ..'
 
-//                 sh 'kubectl autoscale deployment backend --min=2 --max=5 --cpu-percent=80'
-//                 sh 'kubectl autoscale deployment frontend --min=2 --max=5 --cpu-percent=80'
+                sh 'kubectl autoscale deployment backend --min=2 --max=5 --cpu-percent=80'
+                sh 'kubectl autoscale deployment frontend --min=2 --max=5 --cpu-percent=80'
                 
             }
 
