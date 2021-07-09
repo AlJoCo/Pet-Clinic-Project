@@ -29,13 +29,9 @@ The ultimate objective of this group project was to deploy a spring Pet-clinic a
 
 ### Requirements
 - You will need to plan, design and implement a solution for automating the development workflows and deployments of this application. As part of your final deliverable you will need to discuss the project in a presentation and demonstrate these workflows.
-
 - Carefully select the appropriate tools in order to deploy the application. There are no restrictions or requirements on which ones to use; you should decide which you feel are most appropriate and justify their use.
-
 - Multiple Environment support: How can a developer test new features on an environment before merging their changes to the main branch?
-
 - Configure something where changes on the GitHub repository automatically build and deploy to testing and live environments
-
 - Running costs. What are your monthly estimates and can they be improved?
 
 ### Project Proposal
