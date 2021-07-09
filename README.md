@@ -85,6 +85,8 @@ Below is an image of the Jira Board during mid-project.
 
 Below is an image of the Jira Board towards the end of the project.
 ![Jira_board2](images/Jira_board2.jpg)
+![user_story](user_story.jpg)
+
 ## Testing
 The tests had all been written previously due to the project's nature. All we had to do as a team was made sure the testing software was installed and that all of the tests ran and passed. The testing software for this application was Maven. The script to run the tests is below:
 ````
@@ -165,6 +167,8 @@ We were able to track the PetClinic's resources by constructing a unique dashboa
 ![Cost](images/Cost.png)
 
 Initially, We had a £30 budget for our project. Initially, we attempted to stay under AWS's free tier consumption to be as efficient as possible. The application, however, required more memory and CPU than the free tier instances could provide. In this instance, our usual approach to costing would be to run the infrastructure for a set length of time to gather data on utilisation as this would be the most economical of Amazon's packages. Based on this, we'd use cloud resources' scalability to scale our infrastructure in response to demand. For instance, we'd be able to grow based on seasonal need (for example, during the Christmas season) and daily demand (example, a certain period of the day is consistently more busy).
+
+![user_story2](user_story2.jpg)
 
 ## Evaluation
 ### Issues
