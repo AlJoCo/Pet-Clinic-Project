@@ -75,6 +75,8 @@ For the Kanban board, we selected a Jira Board. This was used due to it's simpli
 
 We developed a Jira Board to track the project, which listed all of the tasks that needed to be completed. Wherever possible, an Agile methodology was used in accordance with the project brief. Daily scrums were held in addition to many sprints. Following our morning scrum, the group was split into smaller groups to execute certain tasks. The group will then call for another meeting at the end of the day to examine how the sub-groups did with their tasks and to coordinate workflow. 
 
+![mosco](images/mosco.jpg)
+
 Our Jira board followed the structure of:
 - To do – Incomplete tasks and requirements.
 - In progress – Tasks which are currently being worked on.
@@ -85,7 +87,7 @@ Below is an image of the Jira Board during mid-project.
 
 Below is an image of the Jira Board towards the end of the project.
 ![Jira_board2](images/Jira_board2.jpg)
-![user_story](user_story.jpg)
+![user_story](images/user_story.jpg)
 
 ## Testing
 The tests had all been written previously due to the project's nature. All we had to do as a team was made sure the testing software was installed and that all of the tests ran and passed. The testing software for this application was Maven. The script to run the tests is below:
@@ -150,6 +152,7 @@ One particular change we made during the final sprint/timebox was during the tec
 - Jenkins The preceding operations were automated using Jenkins. When a commit was made to the repository, a Webhook was utilised to start the process. The scripts to run were defined in a Jenkinsfile. There were four scripts in total: The deployment pipeline required to go through four stages in total. The Declarative Checkout SCM is the first. This section effectively checks and structures the way through which the pipeline will be constructed. The configuring of the environment was the second stage. This stage was used to get access to the installation.sh and downloaded the environment needed to start the application deployment.
 
 ![Jenkins.png](images/Jenkins.png)
+![Jenkins_Cluster_Build](images/Jenkins_Cluster_Build.png)
 
 - The third stage was deploying the application, which involved downloading the images from DockerHub and then deploying the entire application using Nginx as the reverse proxy. The testing environment, or the test built to examine the application's back-end, was the last stage. Jenkins was used to automate the testing.
 
@@ -168,7 +171,7 @@ We were able to track the PetClinic's resources by constructing a unique dashboa
 
 Initially, We had a £30 budget for our project. Initially, we attempted to stay under AWS's free tier consumption to be as efficient as possible. The application, however, required more memory and CPU than the free tier instances could provide. In this instance, our usual approach to costing would be to run the infrastructure for a set length of time to gather data on utilisation as this would be the most economical of Amazon's packages. Based on this, we'd use cloud resources' scalability to scale our infrastructure in response to demand. For instance, we'd be able to grow based on seasonal need (for example, during the Christmas season) and daily demand (example, a certain period of the day is consistently more busy).
 
-![user_story2](user_story2.jpg)
+![user_story2](images/user_story2.jpg)
 
 ## Evaluation
 ### Issues
