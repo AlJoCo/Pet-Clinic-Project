@@ -7,7 +7,7 @@ pipeline {
         DOCKER_PASSWORD = credentials('DOCKER_PASSWORD')
         ACCESS_KEY = credentials('ACCESS_KEY')
         SECRET_ACCESS_KEY = credentials('SECRET_ACCESS_KEY')
-        created_cluster = 'true'
+        created_cluster = 'false'
         // DATABASE_URL = credentials('DATABASE_URL')
         // SECRET_KEY = credentials('SECRET_KEY')
     }
@@ -47,8 +47,8 @@ pipeline {
                 sh 'kubectl create -f ./mysql/mysql-configmap.yaml -f ./mysql/mysql-pv.yaml -f ./mysql/mysql-services.yaml -f ./mysql/mysql-statefulset.yaml -f ./mysql/mysql-storageclass.yaml'
                 sh 'cd ..'
 
-                sh 'kubectl autoscale deployment backend --min=2 --max=5 --cpu-percent=80'
-                sh 'kubectl autoscale deployment frontend --min=2 --max=5 --cpu-percent=80'
+//                 sh 'kubectl autoscale deployment backend --min=2 --max=5 --cpu-percent=80'
+//                 sh 'kubectl autoscale deployment frontend --min=2 --max=5 --cpu-percent=80'
                 
             }
 
