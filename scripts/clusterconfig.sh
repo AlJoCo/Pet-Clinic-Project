@@ -1,3 +1,3 @@
 #!/bin/bash
 
-eksctl create cluster -f eks-pcp.yaml
+eksctl create cluster -f ./kubernetes/eks-pcp.yaml
