@@ -63,13 +63,12 @@ used for infrastrcture as code deployment and infrastructure configuration.
 - Cloudwatch - used for monitoring the project, i.e. cost and upscaling
 - Github - used as a Version Control System, the repository was updated and maintained throughout the project. The use of feature branch models came particularly useful thoughout the projct for the purpsoe of efficeincy.
 
-![CloudWatch1](images/CloudWatch1.png)
-![CloudWatch2](images/CloudWatch2.png)
-
 ### Risk Assessment
 Prior to beginning work on the project, we conducted an initial risk assessment. This enabled us to anticipate and address issues before they became a problem. The table below shows how probable each risk is to occur, as well as the impact it would have on the project if it does.
 
 ![risk_assessment](images/risk_assessment.jpg)
+Reviewing and revisiting the risk_assessment again.
+![risk_assessment2](images/risk_assessment2.jpg)
 
 ### Kanban Board & Project Tracking
 For the Kanban board, we selected a Jira Board. This was used due to it's simplicity as well as it's ability to be personalised for each project.
@@ -153,7 +152,11 @@ One particular change we made during the final sprint/timebox was during the tec
 - The third stage was deploying the application, which involved downloading the images from DockerHub and then deploying the entire application using Nginx as the reverse proxy. The testing environment, or the test built to examine the application's back-end, was the last stage. Jenkins was used to automate the testing.
 
 ### Monitoring
-In order to successfully monitor the varied resources that were utilized during the project, a CloudWatch events was set up to monitor our project and identify any potential issues. This included
+In order to successfully monitor the varied resources that were utilized during the project, a CloudWatch events was set up to monitor our project and identify any potential issues.
+
+![CloudWatch1](images/CloudWatch1.png)
+![CloudWatch2](images/CloudWatch2.png)
+
 We were able to track the PetClinic's resources by constructing a unique dashboard. We created a dashboard that shows the most up-to-date statistic at the time of access. For example: 
 - Network Traffic Rates - Higher than usual traffic may mean a malicious attack.
 - High CPU usage - Would automatically spin up a new VM instance in order to successfully reduce the strain place don other VM's.
